@@ -1,5 +1,5 @@
 /*
- * RaptorClishPlugin.cpp
+ * RaptorClishPlugin.c
  *
  */
 
@@ -22,7 +22,7 @@ static void sighandler(int signo)
     return;
 }
 
-extern "C" CLISH_PLUGIN_INIT(ont_cli)
+CLISH_PLUGIN_INIT(ont_cli)
 {
     /* Setupo signal handling */
     if (signal(SIGHUP,  sighandler) == SIG_ERR)
