@@ -4,7 +4,7 @@
  xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
                      http://clish.sourceforge.net/XMLSchema/clish.xsd">
 
-    <PLUGIN name="ont_cli" file="ont_cli.so"> </PLUGIN>
+    <PLUGIN name="ont_cli" file="libont-cli.so"> </PLUGIN>
 
     <VIEW name="global-view" prompt="${HOSTNAME}# ">
     
