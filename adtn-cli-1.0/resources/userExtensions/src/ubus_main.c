@@ -44,7 +44,7 @@ int ubus_main(int argc, char **argv)
     
    if (ret != UBUS_STATUS_OK) {
        printf("Failed to fetch id: %s\n", ubus_strerror(ret));
-       return;
+       return -1;
    }
 
    struct blob_buf bb;
@@ -55,7 +55,7 @@ int ubus_main(int argc, char **argv)
    
    if (ret != UBUS_STATUS_OK) {
        printf("Failed to invoke method: %s\n", ubus_strerror(ret));
-       return;
+       return -1;
    }
     
     printf("Harini invoked method of sample from test \n");

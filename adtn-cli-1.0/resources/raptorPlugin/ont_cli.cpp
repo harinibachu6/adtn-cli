@@ -22,10 +22,6 @@ static void sighandler(int signo)
     return;
 }
 
-extern "C" void InitPostKernelRun(int argc, char** argv)
-{
-}
-
 extern "C" CLISH_PLUGIN_INIT(ont_cli)
 {
     /* Setupo signal handling */
@@ -38,8 +34,6 @@ extern "C" CLISH_PLUGIN_INIT(ont_cli)
     if (signal( SIGTERM, sighandler) == SIG_ERR)
         printf("\ncan't catch %d\n", __LINE__);
 
-    ClishRaptorInit();
-
     clish_plugin_add_psym(plugin, clish_show, "clish_show");
 
     clish_shell = clish_shell; /* Happy compiler */
@@ -47,9 +41,3 @@ extern "C" CLISH_PLUGIN_INIT(ont_cli)
     return 0;
 }
 
-extern "C" CLISH_PLUGIN_SYM(clish_show)
-{
-    printf("Show flow gem\n");
-
-    return clish_show(clish_context, script, out);
-}
