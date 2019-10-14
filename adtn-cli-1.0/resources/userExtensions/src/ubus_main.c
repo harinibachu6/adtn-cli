@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <libubox/blobmsg_json.h>
 #include <libubus.h>
+#include "ubus_main.h"
 
 static void ifStatusCb(struct ubus_request *req, int type, struct blob_attr *msg)
 {
