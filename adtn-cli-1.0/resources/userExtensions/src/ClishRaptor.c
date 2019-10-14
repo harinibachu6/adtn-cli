@@ -13,7 +13,7 @@
 #include <grp.h>
 #include <assert.h>
 #include <string.h>
-#include "ubus_main.c"
+#include "ubus_main.h"
 
 int clish_show(void *clish_context,
                  const char *script,

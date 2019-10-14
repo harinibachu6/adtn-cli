@@ -5,6 +5,8 @@ LIB_SRCS = $(wildcard resources/raptorPlugin/*.c) \
 CFLAGS +=  -I./resources/raptorPlugin/ \
            -I./resources/userExtensions/inc/ \
 
+CFLAGS += -W -Wall -Wextra
+
 CFLAGS  += -D__LITTLE_ENDIAN__ -fPIC -DPIC
 
 LDFLAGS += -lrt -lpthread -lubus -lubox
@@ -29,10 +31,10 @@ headers_install:
 
 $(OUTPUT_DIR)/%.o:%.c
 	mkdir -p $(dir $@)
-	$(C) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(LIB_BIN):$(LIB_OBJS)
-	$(C) -shared  -fPIC -DPIC $^ $(LDFLAGS)  -O2   -Wl,-soname -Wl,$@ -o $@
+	$(CC) -shared  -fPIC -DPIC $^ $(LDFLAGS)  -O2   -Wl,-soname -Wl,$@ -o $@
  
 clean: 
 	$(RM) $(LIB_BIN)
