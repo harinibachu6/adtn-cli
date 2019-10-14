@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+    <PLUGIN name="ont_cli" file="ont_cli.so"> </PLUGIN>
+
+    <VIEW name="global-view" prompt="${HOSTNAME}# ">
+    
+        <COMMAND name="exit"
+                 help=" - Exit current CLI session">
+            <ACTION builtin="clish_close"/>
+        </COMMAND>
+
+        <COMMAND name="history"
+                 help=" - Display the current session's command line history">
+            <PARAM name="limit"
+                   help=" - Set the size of history list"
+                   ptype="HIST"
+                   optional="true"
+                   default=""/>
+            <ACTION builtin="clish_history">${limit}</ACTION>
+        </COMMAND>
+
+        <COMMAND name="reload"
+                 access="rw"
+                 help=" - Perform a warm restart">
+            <ACTION>reboot</ACTION>
+        </COMMAND>
+        
+        <COMMAND name="show"
+                 help=" - Show utility commands"/>
+
+        <COMMAND name="show connection"
+                 help=" - Show connection">
+        </COMMAND>
+        
+        <COMMAND name="show info"
+                 help=" - Show info">
+        </COMMAND>
+
+        <COMMAND name="show stream"
+                 help=" - Show stream">
+        </COMMAND>
+
+        <COMMAND name="show upgrade"
+                 help=" - Show upgrade">
+        </COMMAND>
+
+        <COMMAND name="show flow"
+                 help=" - Show flow utility commands">
+        </COMMAND>
+
+        <COMMAND name="show flow cls"
+                 help=" - Show flow cls">
+        </COMMAND>
+
+        <COMMAND name="show flow filter"
+                 help=" - Show flow filter">
+        </COMMAND>
+
+        <COMMAND name="show flow gem"
+                 help=" - Show flow gem">
+        </COMMAND>
+
+        <COMMAND name="show flow stream_us"
+                 help=" - Show flow upstream">
+        </COMMAND>
+
+        <COMMAND name="show flow stream_ds"
+                 help=" - Show flow downstream">
+        </COMMAND>
+
+        <COMMAND name="show gemflow"
+                 help=" - Show gemflow utility commands">
+        </COMMAND>
+
+        <COMMAND name="show gemflow map"
+                 help=" - Show gemflow map">
+        </COMMAND>
+
+        <COMMAND name="show mcast"
+                 help=" - Show mcast utility commands">
+        </COMMAND>
+
+        <COMMAND name="show mcast cfg"
+                 help=" - Show mcast cfg">
+        </COMMAND>
+
+        <COMMAND name="show mcast preview"
+                 help=" - Show mcast preview">
+        </COMMAND>
+
+        <COMMAND name="show mcast static"
+                 help=" - Show mcast static">
+        </COMMAND>
+
+        <COMMAND name="show mcast dynamic"
+                 help=" - Show mcast dynamic">
+        </COMMAND>
+
+    </VIEW>
+
+</CLISH_MODULE>
