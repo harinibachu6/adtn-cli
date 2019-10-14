@@ -14,10 +14,8 @@ _BEGIN_C_DECL
 #include "lub/db.h"
 _END_C_DECL
 
-int clish_show(void *clish_context,
+extern "C" int clish_show(void *clish_context,
                  const char *script,
                  char **out);
-
-void ClishRaptorInit(void);
 
 #endif /* CLISH_RAPTOR_H_*/

@@ -1,6 +1,6 @@
 LIB_BIN  = libont-cli.so
 LIB_SRCS = $(wildcard resources/raptorPlugin/*.cpp) \
-           $(wildcard resources/userExtensions/src/)
+           $(wildcard resources/userExtensions/src/*.cpp)
 
 CXXFLAGS += -std=c++11 \
             -I./resources/raptorPlugin/ \
@@ -10,11 +10,12 @@ CXXFLAGS  += -D__LITTLE_ENDIAN__ -fPIC -DPIC
 
 LDFLAGS += -lrt -lpthread -lubus
 
+LIBS += -lubus
+
 OUTPUT_DIR = .output
 
 #Makefile share part
 LIB_OBJS  = $(addprefix $(OUTPUT_DIR)/,$(patsubst %.cpp,%.o,$(LIB_SRCS)))
-LIB_DEPS  = $(addprefix $(OUTPUT_DIR)/,$(patsubst %.cpp,%.d,$(LIB_SRCS)))
 
 all: $(LIB_BIN) $(LIB_DEPS) 
 
