@@ -14,6 +14,7 @@
 #include <assert.h>
 #include <string.h>
 #include <iostream>
+#include "ubus_main.c"
 
 void ClishRaptorInit( void )
 {
