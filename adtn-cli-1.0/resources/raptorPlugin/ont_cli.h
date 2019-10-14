@@ -7,7 +7,7 @@
 
 #include "ClishRaptor.h"
 
-extern "C" CLISH_PLUGIN_INIT(ont_cli);
-extern "C" CLISH_PLUGIN_SYM(clish_show);
+CLISH_PLUGIN_INIT(ont_cli);
+CLISH_PLUGIN_SYM(clish_show);
 
 #endif /* RAPTORCLISHPLUGIN_H_ */

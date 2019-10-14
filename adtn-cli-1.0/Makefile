@@ -1,21 +1,21 @@
 LIB_BIN  = libont-cli.so
-LIB_SRCS = $(wildcard resources/raptorPlugin/*.cpp) \
-           $(wildcard resources/userExtensions/src/*.cpp)
+LIB_SRCS = $(wildcard resources/raptorPlugin/*.c) \
+           $(wildcard resources/userExtensions/src/*.c)
 
-CXXFLAGS += -std=c++11 \
+CFLAGS += -std=c++11 \
             -I./resources/raptorPlugin/ \
             -I./resources/userExtensions/inc/ \
 
-CXXFLAGS  += -D__LITTLE_ENDIAN__ -fPIC -DPIC
+CFLAGS  += -D__LITTLE_ENDIAN__ -fPIC -DPIC
 
-LDFLAGS += -lrt -lpthread -lubus
+LDFLAGS += -lrt -lpthread -lubus -lubox
 
-LIBS += -lubus
+LIBS += -lubus -lubox
 
 OUTPUT_DIR = .output
 
 #Makefile share part
-LIB_OBJS  = $(addprefix $(OUTPUT_DIR)/,$(patsubst %.cpp,%.o,$(LIB_SRCS)))
+LIB_OBJS  = $(addprefix $(OUTPUT_DIR)/,$(patsubst %.c,%.o,$(LIB_SRCS)))
 
 all: $(LIB_BIN) $(LIB_DEPS) 
 
@@ -28,12 +28,12 @@ headers_install:
 	cp -rf resources/raptorPlugin/*.h ${DEST}
 	cp -rf resources/userExtensions/inc/* ${DEST}
 
-$(OUTPUT_DIR)/%.o:%.cpp
+$(OUTPUT_DIR)/%.o:%.c
 	mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	$(C) $(CFLAGS) -c -o $@ $<
 
 $(LIB_BIN):$(LIB_OBJS)
-	$(CXX) -shared  -fPIC -DPIC $^ $(LDFLAGS)  -O2   -Wl,-soname -Wl,$@ -o $@
+	$(C) -shared  -fPIC -DPIC $^ $(LDFLAGS)  -O2   -Wl,-soname -Wl,$@ -o $@
  
 clean: 
 	$(RM) $(LIB_BIN)
